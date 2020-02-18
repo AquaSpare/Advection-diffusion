@@ -1,0 +1,7 @@
+% Constants
+N = 160;
+epsilon = 0;
+
+function u0 = func(x)
+u0 = 1;
+end
