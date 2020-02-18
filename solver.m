@@ -21,8 +21,6 @@ for i=1:length(x) % generate u_x with central difference
     end
 end
 
-%test
-
 %%%%%%%% FUNCTIONS
 function u0 = init(x) % Initial conditions
 if abs(2*x-0.3) <= 0.25
