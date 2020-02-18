@@ -1,10 +1,10 @@
 % Constants
 N = 160;
 L = 1;
-h = L/N;
+h = L/(N-1);
 epsilon = 0;
 T = 1;
-k = T/N;
+k = h/2;
 
 
 x = linspace(0,L,N); % Generate N elements between 0 and L
@@ -20,20 +20,21 @@ for i=1:N % Generate initial conditions
     u(1, i) = init(i*h);
 end
 
-<<<<<<< HEAD
-u_x = -(1/(2*h)).*A*u(1,:)';
+t = 0;
+i = 0;
+while t<T
+    
+    k1 = k*runk(A,u');
+    k2 = k*runk(A,u'+ k1/2);
+    k3 = k*runk(A,u' + k2/2);
+    k4 = k*runk(A,u'+ k3);
+    
+    t = t + k;
+    i = i + 1;
+end
 
 
 
-
-=======
-<<<<<<< HEAD
-u_x(1 , :) = centDiff(x, u, h);
-u_t = -u_x;
-
-=======
->>>>>>> b387ebe2567c46af761dce65144717ac76a82aa1
->>>>>>> 949c259ba1fa9542fc8e4bb38e6eb9357b464a64
 %%%%%%%% FUNCTIONS %%%%%%%%
 
 function u_x = centDiff(x, u, h)
@@ -58,8 +59,10 @@ else
 end
 end
 
-function fdot = (A,u)
-udot = 
-
-
+function fdot = runk(A,u)
+fdot = -(1/(2*h)).* A*u';
 end
+
+
+
+
