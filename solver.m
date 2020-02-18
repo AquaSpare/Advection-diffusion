@@ -3,18 +3,28 @@ N = 160;
 L = 1;
 h = L/N;
 epsilon = 0;
+T = 1;
+k = T/N;
+
 
 x = linspace(0,L,N); % Generate N elements between 0 and L
 u = zeros(length(x));
 u_x = zeros(length(x));
 
+A = zeros(N) + diag(ones(1,N-1),1) + diag(-1.*ones(1,N-1),-1);
+A(1,N-1) = 1;
+A(end,2) = 1;
+
 for i=1:N % Generate initial conditions
     u(1, i) = init(i*h);
 end
 
+<<<<<<< HEAD
 u_x(1 , :) = centDiff(x, u, h);
 u_t = -u_x;
 
+=======
+>>>>>>> b387ebe2567c46af761dce65144717ac76a82aa1
 %%%%%%%% FUNCTIONS %%%%%%%%
 
 function u_x = centDiff(x, u, h)
