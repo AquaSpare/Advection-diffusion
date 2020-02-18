@@ -15,9 +15,15 @@ A = zeros(N) + diag(ones(1,N-1),1) + diag(-1.*ones(1,N-1),-1);
 A(1,N-1) = 1;
 A(end,2) = 1;
 
+
 for i=1:N % Generate initial conditions
     u(1, i) = init(i*h);
 end
+
+u_x = -(1/(2*h)).*A*u(1,:)';
+
+
+
 
 %%%%%%%% FUNCTIONS %%%%%%%%
 function u_x = centDiff(x)
